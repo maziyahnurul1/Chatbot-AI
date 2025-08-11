@@ -1,0 +1,34 @@
+streamlit
+networkx
+torch
+requests
+numpy
+pandas
+langchain-community
+langchain-core
+langchain-ollama
+faiss-cpu
+sentence-transformers
+rank-bm25
+pydantic
+PyMuPDF
+docx2txt
+tqdm
+pypdf
+langchain
+psycopg2
+
+
+# Core LangChain & extensions
+langchain==0.3.0
+langchain-core==0.3.50
+langchain-community==0.3.0
+langchain-openai==0.3.12
+langchain-ollama==0.2.3
+
+# Lain‑lain
+Flask==2.3.3
+psycopg2-binary==2.9.9
+python-dotenv==1.0.1
+
+

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Slip Gaji</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px; /* Margin keseluruhan halaman */
+      font-size: 13px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid black;
+      padding: 6px 8px;
+      vertical-align: top;
+    }
+
+    /* Header Table Styling */
+    .header-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px; /* Space below header */
+    }
+    .header-table td {
+      border: none;
+      padding: 0; /* Remove default table cell padding */
+      vertical-align: top; /* Align content to top of cell */
+    }
+
+    .header-logo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Perbaikan untuk logo dan teks Yakes-Telkom */
+    .header-table .logo-container {
+        display: flex; /* Menggunakan flexbox untuk alignment */
+        align-items: center; /* Menyelaraskan item di tengah secara vertikal */
+        gap: 10px; /* Jarak antara logo dan teks */
+        padding: 5px 0; /* Padding vertikal untuk memberi ruang */
+    }
+    .header-table .logo-container img {
+      height: 50px; /* Tingkatkan tinggi logo */
+      width: auto; /* Biarkan lebar menyesuaikan secara proporsional */
+      object-fit: contain; /* Memastikan seluruh gambar terlihat tanpa terpotong */
+    }
+    .header-table .logo-text-container { /* Kontainer baru untuk teks Yakes-Telkom dan tagline */
+        display: flex;
+        flex-direction: column; /* Teks dalam kolom */
+        justify-content: center; /* Pusatkan teks secara vertikal dalam kontainer ini */
+    }
+    .header-table .logo-text { /* For Yakes-Telkom */
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 1.2; /* Sesuaikan line-height */
+    }
+    .header-table .tagline { /* For kami peduli kesehatan anda */
+      font-size: 10px;
+      line-height: 1.2; /* Sesuaikan line-height */
+      margin-top: 2px; /* Slight space below Yakes-Telkom */
+    }
+    .header-table .confidential-text { /* For Rahasia/ Pribadi */
+      font-style: italic;
+      font-size: 10px;
+      text-align: right;
+      white-space: nowrap;
+      padding-top: 5px; /* Sesuaikan padding-top agar sejajar dengan logo */
+    }
+
+    /* Title Styling */
+    .title {
+      text-align: center;
+      font-weight: bold;
+      padding: 5px;
+      border: 1px solid black;
+      border-top: none; /* No top border if it follows directly */
+      font-size: 14px;
+      background-color: #f2f2f2; /* Light gray background like PDF */
+      margin-bottom: 0px; /* Connects to next table */
+    }
+
+    /* Employee Info Table Styling */
+    .employee-info-table {
+      margin-top: 0px; /* Connects to the title above */
+    }
+    .employee-info-table td {
+      border: none; /* No borders like in PDF */
+      padding: 2px 0; /* Reduced vertical padding */
+    }
+    .employee-info-table .label-col {
+      width: 15%; /* Adjust width for labels */
+    }
+    .employee-info-table .colon-col {
+      width: 2%; /* Adjust width for colon */
+    }
+
+    /* Section Title Styling */
+    .section-title {
+      text-align: center;
+      font-weight: bold;
+      padding: 5px;
+      border: 1px solid black;
+      border-bottom: none; /* Connects to the table below */
+      font-size: 12px;
+      margin-top: 10px; /* Space from previous section */
+      background-color: #f2f2f2;
+    }
+
+    /* Perincian Gaji Table Styling */
+    .perincian-gaji-table th, .perincian-gaji-table td {
+        text-align: center;
+        padding: 6px 8px;
+    }
+    .perincian-gaji-table th {
+        background-color: #f2f2f2;
+    }
+    .perincian-gaji-table td.terbilang-cell {
+        text-align: left; /* Terbilang rata kiri */
+        font-style: italic;
+    }
+
+    /* Breakdown Table Styling */
+    .breakdown-table {
+        margin-top: 0px; /* Directly below perincian gaji title */
+    }
+    .breakdown-table th {
+        text-align: center;
+        vertical-align: middle;
+        background-color: #f2f2f2;
+    }
+    .breakdown-table td:nth-child(2), .breakdown-table td:nth-child(4) {
+        text-align: right; /* Jumlah columns align right */
+        font-weight: bold;
+    }
+
+    /* Footer Section Styling */
+    .footer-section {
+        margin-top: 15px;
+    }
+    .footer-table td {
+        border: none;
+        padding: 2px 0;
+    }
+    .footer-table .label {
+        width: 15%;
+        vertical-align: top;
+    }
+    .footer-table .colon {
+        width: 2%;
+        vertical-align: top;
+    }
+    .footer-table .value {
+        width: 83%;
+        vertical-align: top;
+    }
+
+    .total-label {
+        font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<table class="header-table">
+    <tr>
+      <td style="width: 70%; vertical-align: top;">
+        <div class="logo-container">
+          <!-- <img src="LogoYakes.png" alt="Logo Yakes Test"> -->
+          <!-- <img src="data:image/png;base64,{{ logo_yakes_base64 }}" alt="Logo Yakes" width="100"> -->
+          <img src="{{ logo_path }}" alt="Logo Yakes" width="100">
+
+        </td>
+      <td style="width: 30%; text-align: right; vertical-align: top;">
+        <div class="confidential-text">Rahasia/ Pribadi</div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="title">SLIP GAJI</div>
+
+  <table class="employee-info-table">
+    <tr>
+      <td class="label-col">NIK</td>
+      <td class="colon-col">:</td>
+      <td>{{ nik }}</td>
+      <td class="label-col">Jenis Gaji</td>
+      <td class="colon-col">:</td>
+      <td>Reguler</td>
+    </tr>
+    <tr>
+      <td class="label-col">Nama</td>
+      <td class="colon-col">:</td>
+      <td>{{ nama_karyawan }}</td>
+      <td class="label-col">Periode</td>
+      <td class="colon-col">:</td>
+      <td>{{ periode }}</td>
+    </tr>
+    <tr>
+      <td class="label-col">Posisi</td>
+      <td class="colon-col">:</td>
+      <td>{{ posisi }}</td>
+      <td class="label-col">Lokasi Kerja</td>
+      <td class="colon-col">:</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <div class="section-title">PERINCIAN GAJI</div>
+
+  <table class="perincian-gaji-table">
+    <thead>
+      <tr>
+        <th>Total Penghasilan (Rp)</th>
+        <th>Total Potongan (Rp)</th>
+        <th>Gaji Bersih (Rp)</th>
+        <th>Terbilang :</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ "{:,.0f}".format(total_penghasilan_bruto) }}</td>
+        <td>{{ "{:,.0f}".format(total_potongan_terinci) }}</td>
+        <td>{{ "{:,.0f}".format(total_gaji) }}</td>
+        <td class="terbilang-cell">{{ total_gaji_terbilang }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="breakdown-table">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Jenis Penghasilan</th>
+        <th style="width: 25%;">Jumlah</th>
+        <th style="width: 25%;">Jenis Potongan</th>
+        <th style="width: 25%;">Jumlah</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Basic Salary</td><td>{{ "{:,.0f}".format(gaji_dasar) }}</td>
+        <td>JKK (BPJS TK) - Pemberi Kerja</td><td>{{ "{:,.0f}".format(jaminan_keselamatan_kerja | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>Position Allowance</td><td>{{ "{:,.0f}".format(tunjangan_posisi | default(0)) }}</td>
+        <td>JKM (BPJS TK) - Pemberi Kerja</td><td>{{ "{:,.0f}".format(jaminan_kematian | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>Functional Allowance</td><td>{{ "{:,.0f}".format(tunjangan_profesi | default(0)) }}</td>
+        <td>JHT (BPJS TK) - Pemberi Kerja</td><td>{{ "{:,.0f}".format(jht_pk | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>Bantuan Lokasi Kerja</td><td>{{ "{:,.0f}".format(bantuan_lokasi_kerja | default(0)) }}</td>
+        <td>JHT (BPJS TK) - Tenaga Kerja</td><td>{{ "{:,.0f}".format(jht_tk | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>Bantuan Kemudahan Kerja</td><td>{{ "{:,.0f}".format(fastel | default(0)) }}</td>
+        <td>JP (BPJS TK) - Pemberi Kerja</td><td>{{ "{:,.0f}".format(jaminan_pensiun_pk | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>Bantuan Kendaraan Jabatan</td><td>{{ "{:,.0f}".format(transportasi | default(0)) }}</td>
+        <td>JP (BPJS TK) - Tenaga Kerja</td><td>{{ "{:,.0f}".format(jaminan_pensiun_tk | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>PGS</td><td>{{ "{:,.0f}".format(faktor_penyesuai | default(0)) }}</td>
+        <td>JKN (BPJS Kes) - Pemberi Kerja</td><td>{{ "{:,.0f}".format(jamkes_pk | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>Rapel</td><td>{{ "{:,.0f}".format(rapelan | default(0)) }}</td>
+        <td>JKN (BPJS Kes) - Tenaga Kerja</td><td>{{ "{:,.0f}".format(jamkes_tk | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>Functional Allowance (Individu)</td><td>{{ "{:,.0f}".format(tunjangan_pes | default(0)) }}</td>
+        <td>Potongan PPH 21</td><td>{{ "{:,.0f}".format(potongan_pph21 | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>JKK (BPJS TK) - Pemberi Kerja</td><td>{{ "{:,.0f}".format(jaminan_keselamatan_kerja | default(0)) }}</td>
+        <td>Potongan KOIN</td><td>{{ "{:,.0f}".format(potongan_koin | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>JKM (BPJS TK) - Pemberi Kerja</td><td>{{ "{:,.0f}".format(jaminan_kematian | default(0)) }}</td>
+        <td>Potongan KOPTEL</td><td>{{ "{:,.0f}".format(potongan_koptel | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>JHT (BPJS TK) - Pemberi Kerja</td><td>{{ "{:,.0f}".format(jht_pk | default(0)) }}</td>
+        <td>Potongan Zakat</td><td>{{ "{:,.0f}".format(potongan_zakat | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>JP (BPJS TK) - Pemberi Kerja</td><td>{{ "{:,.0f}".format(jaminan_pensiun_pk | default(0)) }}</td>
+        <td>Potongan Wakaf</td><td>{{ "{:,.0f}".format(potongan_wakaf | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>JKN (BPJS Kes) - Pemberi Kerja</td><td>{{ "{:,.0f}".format(jamkes_pk | default(0)) }}</td>
+        <td>Potongan Infaq</td><td>{{ "{:,.0f}".format(potongan_infaq | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td>Tunjangan PPh 21</td><td>{{ "{:,.0f}".format(tunjangan_pph21 | default(0)) }}</td>
+        <td>Potongan DPLK (Sukarela)</td><td>{{ "{:,.0f}".format(potongan_dplk_sukarela | default(0)) }}</td>
+      </tr>
+      <tr>
+        <td></td><td></td>
+        <td>Potongan Absensi</td><td>{{ "{:,.0f}".format(potongan_absensi | default(0)) }}</td>
+      </tr>
+      {% if 'potongan_lainnya' in vars or 'potongan' in vars %}
+      <tr>
+        <td></td><td></td>
+        <td>Potongan Lainnya</td><td>{{ "{:,.0f}".format(potongan_lainnya | default(potongan)) }}</td>
+      </tr>
+      {% endif %}
+      <tr>
+        <td class="total-label">Total Penghasilan</td><td class="total-label">{{ "{:,.0f}".format(total_penghasilan_bruto) }}</td>
+        <td class="total-label">Total Potongan</td><td class="total-label">{{ "{:,.0f}".format(total_potongan_terinci) }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="footer-section">
+    <table class="footer-table">
+      <tr>
+        <td colspan="3">Telah dibukukan ke Rekening Saudara:</td>
+      </tr>
+      <tr>
+        <td class="label">Nomor</td>
+        <td class="colon">:</td>
+        <td class="value">{{ nomor_rekening }}</td>
+      </tr>
+      <tr>
+        <td class="label">Bank</td>
+        <td class="colon">:</td>
+        <td class="value">{{ nama_bank | default('') }}</td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>
