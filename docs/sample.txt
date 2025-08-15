@@ -1,3 +1,0 @@
-PostgreSQL adalah sistem database relasional yang banyak digunakan untuk aplikasi skala besar. 
-PGVector adalah ekstensi PostgreSQL yang digunakan untuk menyimpan dan mencari vektor embedding.
-LangChain adalah framework untuk membangun aplikasi AI berbasis LLM dengan integrasi berbagai sumber data.
